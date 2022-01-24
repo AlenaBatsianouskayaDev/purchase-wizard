@@ -1,5 +1,5 @@
-<div class="card" style="width: 15rem;">
-  <div class="card-body">
+<!-- <div class="card" style="width: 15rem;"> -->
+  <!-- <div class="card-body">
     <div class="heading">
       <h5 class="card-title">{{ plan?.name }}</h5>
       <span>Best offer</span>
@@ -10,5 +10,21 @@
     </ng-container>
     <p>{{ plan?.price }} {{ plan?.currency }}</p>
     <a (click)="goPayment()" class="card-link">Select</a>
+  </div> -->
+
+
+  <div class="card">
+    <div class="card-header">
+      {{ plan?.name }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Why to choose</h5>
+      <ng-container *ngFor="let description of plan?.description">
+        <p class="card-text">{{ description }}</p>
+      </ng-container>
+      <p>{{ plan?.price }} {{ plan?.currency }}</p>
+      <a (click)="goPayment()" class="btn btn-primary">Go somewhere</a>
+    </div>
   </div>
-</div>
+<!-- </div> -->
+

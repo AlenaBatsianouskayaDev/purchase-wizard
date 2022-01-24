@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Order confirmation</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Plan name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Currency</th>
+      <th scope="col">Card type</th>
+      <th scope="col">Card number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ order?.value?.planName }}</td>
+      <td>{{ order?.value?.price }}</td>
+      <td>{{ order?.value?.currency }}</td>
+      <td>
+        <ng-container>
+          <i class="fab fa-cc-visa"></i>
+          {{ card?.value?.cardType }}
+        </ng-container>
+      </td>
+      <td>{{ card?.value?.cardNumber }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="confirm-block">
+    <button
+      *ngIf="!isLoading"
+      (click)="purchase()"
+      type="submit"
+      class="btn btn-primary"
+    >Purchase
+    </button>
+    
+  </div>
+</div>
