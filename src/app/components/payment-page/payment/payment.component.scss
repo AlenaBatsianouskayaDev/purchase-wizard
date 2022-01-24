@@ -1,0 +1,25 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-container{
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 25px auto;
+}
+
+.form-group,
+label{
+  margin-bottom: 0;
+}
+
+.confirm-block{
+  margin-top: 15px
+}
+.btn[disabled]{
+  background-color: grey;
+  cursor: no-drop;
+}
