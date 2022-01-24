@@ -1,0 +1,28 @@
+<div class="container">
+  <ul ngbNav #nav="ngbNav" class="row nav-tabs navigation">
+    <li ngbNavItem="Personal">
+      <a ngbNavLink>Personal</a>
+      <ng-template ngbNavContent>
+        <div class="row item-list" >
+          <app-item-card *ngFor="let plan of personalPlansList" [plan]="plan"></app-item-card>
+        </div>
+      </ng-template>
+    </li>
+    <li ngbNavItem="Enterprise">
+      <a ngbNavLink>Enterprise</a>
+      <ng-template ngbNavContent>
+        <div class="row">
+          <app-item-card *ngFor="let plan of enterprisePlansList" [plan]="plan"></app-item-card>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+</div>
+
+
+
+
+
+
+

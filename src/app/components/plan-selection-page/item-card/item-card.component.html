@@ -1,0 +1,14 @@
+<div class="card" style="width: 15rem;">
+  <div class="card-body">
+    <div class="heading">
+      <h5 class="card-title">{{ plan?.name }}</h5>
+      <span>Best offer</span>
+    </div>
+    <h6 class="card-subtitle mb-2 text-muted">Why to choose</h6>
+    <ng-container *ngFor="let description of plan?.description">
+      <p class="card-text">{{ description }}</p>
+    </ng-container>
+    <p>{{ plan?.price }} {{ plan?.currency }}</p>
+    <a (click)="goPayment()" class="card-link">Select</a>
+  </div>
+</div>
