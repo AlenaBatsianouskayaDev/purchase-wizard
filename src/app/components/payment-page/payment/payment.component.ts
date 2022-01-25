@@ -59,7 +59,7 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
     this.checkCardChanges();
   }
 
-  checkUsa(): void {
+  private checkUsa(): void {
     this.cardDataForm.get('country')?.valueChanges.pipe(
       takeUntil(this.destroy$))
       .subscribe(country => {
@@ -67,7 +67,7 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
       })
   }
 
-  submitPayment(): void {
+  public submitPayment(): void {
     const card: ICard = {
       cardNumber: this.cardDataForm.value.cardNumber,
       cardType: this.cardDataForm.value.cardType,
@@ -76,13 +76,13 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
     this.router.navigate(['/order-preview']);
   }
 
-  checkCardChanges(): void {
+  private checkCardChanges(): void {
     this.cardDataForm.get('cardNumber')?.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => value.length >= 4 && this.fillFormFields());
   }
 
-  fillFormFields(): void {
+  private fillFormFields(): void {
     const formPatchData = {
       cardType: this.orderService.getCardType(this.cardDataForm.get('cardNumber')?.value)
     };

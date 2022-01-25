@@ -8,7 +8,9 @@
       <ul *ngFor="let description of plan?.description">
         <li class="card-text">{{ description }}</li>
       </ul>
-      <p>${{ plan?.price }} {{ plan?.currency }}</p>
+      <p>${{ plan?.price }} {{ plan?.currency }}
+        <span *ngIf='plan?.bestPrice' class="best-price">(best price)</span>
+      </p>
       <a (click)="onSelected()" class="btn btn-primary">Select</a>
     </div>
   </div>

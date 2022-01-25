@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IPlan } from './../../../interfaces/plans.interface';
@@ -18,7 +18,7 @@ export class ItemCardComponent {
     private orderService: OrderService
     ) { }
 
-  onSelected(): void {
+  public onSelected(): void {
     const order: IOrder = {
       planName: this.plan?.name,
       price: this.plan?.price,

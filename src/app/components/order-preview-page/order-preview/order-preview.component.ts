@@ -27,7 +27,7 @@ export class OrderPreviewComponent implements OnInit {
     this.card = this.orderService.cardData$;
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     this.isLoading = true;
     setTimeout(() => {
       this.router.navigate(['/completed']);

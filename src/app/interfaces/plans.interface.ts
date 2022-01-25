@@ -3,7 +3,8 @@ export interface IPlan {
   name: string,
   description: string[],
   currency: string,
-  price: number
+  price: number,
+  bestPrice: boolean
 }
 
 export interface IPlans {

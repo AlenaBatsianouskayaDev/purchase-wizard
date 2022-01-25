@@ -11,7 +11,7 @@ export class OrderService {
   public cardData$: BehaviorSubject<ICard | null> = new BehaviorSubject<ICard | null>(null);
   public paymentData$: BehaviorSubject<IOrder | null> = new BehaviorSubject<IOrder | null>(null);
 
-  getCardType(value: number): string {
+  public getCardType(value: number): string {
     let cardType = '';
     switch (value.toString()[0]) {
       case '3': cardType = 'American Express';
