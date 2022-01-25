@@ -1,0 +1,72 @@
+{
+  "personalPlans": [
+    {
+      "id": "id-1",
+      "name": "Personal plan 1",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      ],
+      "currency": "USD",
+      "price": 5
+    },
+    {
+      "id": "id-2",
+      "name": "Personal plan 2",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      ],
+      "currency": "USD",
+      "price": 7
+    },
+    {
+      "id": "id-3",
+      "name": "Personal plan 3",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      ],
+      "currency": "USD",
+      "price": 10
+    }
+  ],
+  "enterprisePlans": [
+    {
+      "id": "id-4",
+      "name": "Enterprise plan 1",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      ],
+      "currency": "USD",
+      "price": 10
+    },
+    {
+      "id": "id-5",
+      "name": "Enterprise plan 2",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      ],
+      "currency": "USD",
+      "price": 7
+    },
+    {
+      "id": "id-6",
+      "name": "Enterprise plan 3",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      ],
+      "currency": "USD",
+      "price": 5
+    }
+  ]
+}

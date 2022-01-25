@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { IOrder } from 'src/app/interfaces/order.interface';
-import { ICard } from 'src/app/interfaces/card.interface';
-import { OrderService } from 'src/app/services/order.service';
+import { IOrder } from './../../../interfaces/order.interface';
+import { ICard } from './../../../interfaces/card.interface';
+import { OrderService } from './../../../services/order.service';
 
 @Component({
   selector: 'app-order-preview',

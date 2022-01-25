@@ -6,3 +6,7 @@ export interface IPlan {
   price: number
 }
 
+export interface IPlans {
+  personalPlans: IPlan[],
+  enterprisePlans: IPlan[],
+}

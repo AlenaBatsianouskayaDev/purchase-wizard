@@ -1,4 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+
+.page-wrapper {
+  margin: 50px 0;
+  padding: 0 70px;
+}
 
 // .container {
 //   display: flex;

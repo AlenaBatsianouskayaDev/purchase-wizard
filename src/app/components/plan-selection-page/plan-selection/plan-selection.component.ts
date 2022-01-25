@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
 
 import { PlanService } from './../../../services/plan.service';
-import { IPlan } from './../../../interfaces/plan.interface';
+import { IPlan } from './../../../interfaces/plans.interface';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plan-selection',
@@ -12,17 +12,19 @@ import { IPlan } from './../../../interfaces/plan.interface';
 })
 export class PlanSelectionComponent implements OnInit {
 
-  public personalPlansList?: IPlan[];
-  public enterprisePlansList?: IPlan[];
-  
-  
+  public personalPlans$: Observable<IPlan[]>;
+  public enterprisePlans$: Observable<IPlan[]>;
+
   constructor(
-    private router: Router,
     private planService: PlanService,
     ) {}
 
-    ngOnInit(): void {
-      this.personalPlansList = this.planService.personalPlansList;
-      this.enterprisePlansList = this.planService.enterprisePlansList;
-    }
+  ngOnInit(): void {
+    this.personalPlans$ = this.planService.getPlans().pipe(
+      map(data => data.personalPlans)
+    );
+    this.enterprisePlans$ = this.planService.getPlans().pipe(
+      map(data => data.enterprisePlans)
+    );
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
 
-import { IPlan } from 'src/app/interfaces/plan.interface';
+import { IPlan } from './../../../interfaces/plans.interface';
 import { OrderService } from './../../../services/order.service';
 import { IOrder } from './../../../interfaces/order.interface';
 
@@ -18,7 +18,7 @@ export class ItemCardComponent {
     private orderService: OrderService
     ) { }
 
-  goPayment(): void {
+  onSelected(): void {
     const order: IOrder = {
       planName: this.plan?.name,
       price: this.plan?.price,
