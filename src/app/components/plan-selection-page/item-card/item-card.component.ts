@@ -24,7 +24,7 @@ export class ItemCardComponent {
       price: this.plan?.price,
       currency: this.plan?.currency
     }
-    this.orderService.paymentInfo$.next(order)
+    this.orderService.paymentData$.next(order)
     this.router.navigate(['/payment'])
   }
 }

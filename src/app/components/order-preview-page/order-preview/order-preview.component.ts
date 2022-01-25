@@ -22,8 +22,8 @@ export class OrderPreviewComponent implements OnInit {
     private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.order = this.orderService.paymentInfo$;
-    this.card = this.orderService.cardInfo$;
+    this.order = this.orderService.paymentData$;
+    this.card = this.orderService.cardData$;
   }
 
   purchase(): void {

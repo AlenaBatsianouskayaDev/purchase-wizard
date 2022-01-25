@@ -13,6 +13,7 @@ import { PaymentComponent } from './components/payment-page/payment/payment.comp
 import { OrderPreviewComponent } from './components/order-preview-page/order-preview/order-preview.component';
 import { CompletedPageComponent } from './components/purchase-completed-page/completed-page/completed-page.component';
 import { PlanSelectionPageComponent } from './components/plan-selection-page/plan-selection-page.component';
+import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlanSelectionPageComponent } from './components/plan-selection-page/pla
     PaymentComponent,
     OrderPreviewComponent,
     CompletedPageComponent,
-    PlanSelectionPageComponent
+    PlanSelectionPageComponent,
+    PaymentPageComponent
   ],
   imports: [
     CommonModule,

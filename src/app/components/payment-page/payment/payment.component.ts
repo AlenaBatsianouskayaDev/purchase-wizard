@@ -1,116 +1,94 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil} from 'rxjs/operators';
-import { Subject } from "rxjs";
 
 import { COUNTRIES } from './../../../data/countries';
 import { ICountries } from './../../../interfaces/countries.interface';
 import { ICard } from './../../../interfaces/card.interface';
 import { OrderService } from './../../../services/order.service';
+import { UnsubscriberBaseClass } from 'app/shared/unsubscriber-base-class.class';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit, OnDestroy {
+export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, OnDestroy {
 
-  form: FormGroup;
+  cardDataForm: FormGroup;
   countries: ICountries[] = COUNTRIES;
   isLoading: boolean = false;
-  isUSA: boolean = false;
-  destroy$: Subject<void> = new Subject<void>();
+  isUsa: boolean = false;
 
   constructor(
     private router: Router,
-    private orderService: OrderService
+    private orderService: OrderService,
+    public fb: FormBuilder,
   ) {
-    
+    super()
   }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      country: new FormControl('', [Validators.required]),
-      city: new FormControl('', [Validators.required]),
-      street1: new FormControl('', [Validators.required]),
-      street2: new FormControl('', [Validators.required]),
-      zipCode: new FormControl('', [Validators.required]),
-      cardNumber: new FormControl('',
+    this.cardDataForm = this.fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      country: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      street1: ['', [Validators.required]],
+      street2: ['', [Validators.required]],
+      zipCode: ['', [Validators.required]],
+      cardNumber: ['',
         [
           Validators.required,
           Validators.minLength(16),
           Validators.maxLength(16)
-        ]),
-      ccv: new FormControl('',
+        ]],
+      ccv: ['',
         [
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(3)
-        ]),
-      cardType: new FormControl('', [Validators.required]),
-      expiryDate: new FormControl('', [Validators.required])
+        ]],
+      expiryDate: ['', [Validators.required]],
+      cardType: ['', [Validators.required]],
     })
-    this.checkIsUSA();
-    this.detectCardNumberValueChanges();
+    this.checkUsa();
+    this.checkCardChanges();
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+  checkUsa(): void {
+    this.cardDataForm.get('country')?.valueChanges.pipe(
+      takeUntil(this.destroy$))
+      .subscribe(country => {
+        if (country === 'United States of America (the)') {
+          this.cardDataForm.addControl('state', this.fb.control('', Validators.required));
+        }
+      })
   }
 
   submitPayment(): void {
     this.isLoading = true;
     const card: ICard = {
-      cardNumber: this.form.value.cardNumber
+      cardNumber: this.cardDataForm.value.cardNumber
     }
-    this.orderService.cardInfo$.next(card)
-    this.router.navigate(['/confirmation']);
+    this.orderService.cardData$.next(card)
+    this.router.navigate(['/order-preview']);
   }
 
-  detectCardNumberValueChanges(): void {
-    this.form.get('cardNumber')?.valueChanges
+  checkCardChanges(): void {
+    this.cardDataForm.get('cardNumber')?.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => value.length >= 4 && this.fillFormFields());
   }
 
   fillFormFields(): void {
     const formPatchData = {
-      cardType: this.getCardType(this.form.get('cardNumber')?.value)
+      cardType: this.orderService.getCardType(this.cardDataForm.get('cardNumber')?.value)
     };
-    this.form.patchValue(formPatchData);
-  }
-
-  getCardType(value: number): string {
-    let cardType = '';
-    switch (value.toString()[0]) {
-      case '4': cardType = 'Visa';
-        break;
-      case '5': cardType = 'MasterCard';
-        break;
-      case '3': cardType = 'American Express';
-        break;
-      case '6': cardType = 'Discover';
-        break;
-    }
-    return cardType;
-  }
-
-  checkIsUSA(): void {
-    this.form.get('country')?.valueChanges
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(country => {
-        this.isUSA = country === 'United States of America (the)';
-        if (this.isUSA) {
-          this.form.addControl('state', new FormControl(null, [Validators.required]));
-        }else{
-          this.form.removeControl('state');
-        }
-      })
+    this.cardDataForm.patchValue(formPatchData);
   }
 }
