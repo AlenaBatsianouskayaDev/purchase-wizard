@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 
 import { IOrder } from './../../../interfaces/order.interface';
 import { ICard } from './../../../interfaces/card.interface';
@@ -16,7 +17,8 @@ export class OrderPreviewComponent implements OnInit {
   public isLoading: boolean = false;
   public order: BehaviorSubject<IOrder | null> | undefined;
   public card: BehaviorSubject<ICard | null> | undefined;
-
+  public cardIcon = faCreditCard;
+  
   constructor(
     private router: Router,
     private orderService: OrderService

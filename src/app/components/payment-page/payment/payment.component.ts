@@ -52,7 +52,11 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
           Validators.minLength(3),
           Validators.maxLength(3)
         ]],
-      expiryDate: ['', [Validators.required]],
+      expiryDate: ['', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(4)
+      ]],
       cardType: ['', [Validators.required]],
     })
     this.checkUsa();
