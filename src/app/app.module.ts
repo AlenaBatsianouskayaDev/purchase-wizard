@@ -14,6 +14,8 @@ import { OrderPreviewComponent } from './components/order-preview-page/order-pre
 import { CompletedPageComponent } from './components/purchase-completed-page/completed-page/completed-page.component';
 import { PlanSelectionPageComponent } from './components/plan-selection-page/plan-selection-page.component';
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
+import { OrderPreviewPageComponent } from './components/order-preview-page/order-preview-page.component';
+import { LoaderComponent } from './components/shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PaymentPageComponent } from './components/payment-page/payment-page.com
     OrderPreviewComponent,
     CompletedPageComponent,
     PlanSelectionPageComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    OrderPreviewPageComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,4 @@
 <div class="container">
-  <h2>Order confirmation</h2>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -26,14 +25,15 @@
     </tbody>
   </table>
 
-  <div class="confirm-block">
+  <div class="submit-block">
     <button
       *ngIf="!isLoading"
       (click)="purchase()"
       type="submit"
       class="btn btn-primary"
     >Purchase
+    <app-loader *ngIf="isLoading"></app-loader>
     </button>
-    
   </div>
+  
 </div>

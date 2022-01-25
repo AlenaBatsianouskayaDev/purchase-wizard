@@ -19,7 +19,8 @@ export class OrderPreviewComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private orderService: OrderService) { }
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
     this.order = this.orderService.paymentData$;
