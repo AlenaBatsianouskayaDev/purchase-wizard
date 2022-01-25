@@ -22,7 +22,7 @@ export class ItemCardComponent {
     const order: IOrder = {
       planName: this.plan?.name,
       price: this.plan?.price,
-      currency: this.plan?.currency
+      currency: this.plan?.currency,
     }
     this.orderService.paymentData$.next(order)
     this.router.navigate(['/payment'])

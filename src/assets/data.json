@@ -9,7 +9,8 @@
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       ],
       "currency": "USD",
-      "price": 5
+      "price": 5,
+      "bestPrice": true
     },
     {
       "id": "id-2",
@@ -20,7 +21,8 @@
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       ],
       "currency": "USD",
-      "price": 7
+      "price": 7,
+      "bestPrice": false
     },
     {
       "id": "id-3",
@@ -31,7 +33,8 @@
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       ],
       "currency": "USD",
-      "price": 10
+      "price": 10,
+      "bestPrice": false
     }
   ],
   "enterprisePlans": [
@@ -44,7 +47,8 @@
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       ],
       "currency": "USD",
-      "price": 10
+      "price": 10,
+      "bestPrice": false
     },
     {
       "id": "id-5",
@@ -55,7 +59,8 @@
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       ],
       "currency": "USD",
-      "price": 7
+      "price": 7,
+      "bestPrice": false
     },
     {
       "id": "id-6",
@@ -66,7 +71,8 @@
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       ],
       "currency": "USD",
-      "price": 5
+      "price": 5,
+      "bestPrice": true
     }
   ]
 }

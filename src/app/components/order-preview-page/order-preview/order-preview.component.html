@@ -16,8 +16,7 @@
       <td>{{ order?.value?.currency }}</td>
       <td>
         <ng-container>
-          <i class="fab fa-cc-visa"></i>
-          {{ card?.value?.cardType }}
+          <span>{{ card?.value?.cardType }}</span>
         </ng-container>
       </td>
       <td>{{ card?.value?.cardNumber }}</td>
@@ -30,8 +29,8 @@
       *ngIf="!isLoading"
       (click)="onSubmit()"
       type="submit"
-      class="btn btn-primary"
-    >Submit
+      class="btn btn-primary">
+      Submit
     </button>
     <app-loader *ngIf="isLoading"></app-loader>
   </div>

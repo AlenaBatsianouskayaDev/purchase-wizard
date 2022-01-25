@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil} from 'rxjs/operators';
 
 import { COUNTRIES } from './../../../data/countries';
@@ -35,10 +35,10 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
       phone: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       country: ['', [Validators.required]],
-      state: ['', [Validators.required]],
+      state: [''],
       city: ['', [Validators.required]],
       street1: ['', [Validators.required]],
-      street2: ['', [Validators.required]],
+      street2: [''],
       zipCode: ['', [Validators.required]],
       cardNumber: ['',
         [
@@ -63,18 +63,14 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
     this.cardDataForm.get('country')?.valueChanges.pipe(
       takeUntil(this.destroy$))
       .subscribe(country => {
-        if (country === 'United States of America (the)') {
-          this.cardDataForm.addControl('state', this.fb.control('', Validators.required));
-        }
+        this.isUsa = country === 'United States of America (the)';
       })
   }
 
   submitPayment(): void {
-    // if (this.cardDataForm.invalid) {
-    //   return
-    // }
     const card: ICard = {
-      cardNumber: this.cardDataForm.value.cardNumber
+      cardNumber: this.cardDataForm.value.cardNumber,
+      cardType: this.cardDataForm.value.cardType,
     }
     this.orderService.cardData$.next(card)
     this.router.navigate(['/order-preview']);
