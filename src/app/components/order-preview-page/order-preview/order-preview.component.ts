@@ -13,9 +13,9 @@ import { OrderService } from './../../../services/order.service';
 })
 export class OrderPreviewComponent implements OnInit {
   
-  isLoading: boolean = false;
-  order: BehaviorSubject<IOrder | null> | undefined;
-  card: BehaviorSubject<ICard | null> | undefined;
+  public isLoading: boolean = false;
+  public order: BehaviorSubject<IOrder | null> | undefined;
+  public card: BehaviorSubject<ICard | null> | undefined;
 
   constructor(
     private router: Router,
@@ -27,7 +27,7 @@ export class OrderPreviewComponent implements OnInit {
     this.card = this.orderService.cardData$;
   }
 
-  purchase(): void {
+  onSubmit(): void {
     this.isLoading = true;
     setTimeout(() => {
       this.router.navigate(['/completed']);

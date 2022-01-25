@@ -18,7 +18,6 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
 
   cardDataForm: FormGroup;
   countries: ICountries[] = COUNTRIES;
-  isLoading: boolean = false;
   isUsa: boolean = false;
 
   constructor(
@@ -71,7 +70,9 @@ export class PaymentComponent extends UnsubscriberBaseClass implements OnInit, O
   }
 
   submitPayment(): void {
-    this.isLoading = true;
+    // if (this.cardDataForm.invalid) {
+    //   return
+    // }
     const card: ICard = {
       cardNumber: this.cardDataForm.value.cardNumber
     }

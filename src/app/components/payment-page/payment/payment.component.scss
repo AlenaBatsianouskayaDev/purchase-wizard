@@ -1,25 +1,31 @@
-.container{
+@import './../../../../scss/variables.scss';
+
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.payment-container{
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 20px;
+.payment-container {
+  width: 50%;
+  border: 1px solid $light-grey;
+  border-radius: 5px;
+  padding: 20px 30px;
   margin: 25px auto;
 }
 
 .form-group,
-label{
-  margin-bottom: 0;
+label {
+  margin-bottom: 5px;
 }
 
-.confirm-block{
-  margin-top: 15px
+.submit-block {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
-.btn[disabled]{
-  background-color: grey;
+
+.btn[disabled] {
+  background-color: $light-grey;
   cursor: no-drop;
 }

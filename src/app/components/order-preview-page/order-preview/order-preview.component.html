@@ -28,12 +28,12 @@
   <div class="submit-block">
     <button
       *ngIf="!isLoading"
-      (click)="purchase()"
+      (click)="onSubmit()"
       type="submit"
       class="btn btn-primary"
-    >Purchase
-    <app-loader *ngIf="isLoading"></app-loader>
+    >Submit
     </button>
+    <app-loader *ngIf="isLoading"></app-loader>
   </div>
   
 </div>

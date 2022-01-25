@@ -1,6 +1,6 @@
 <div class="container">
   <div class="payment-container">
-    <form [formGroup]="cardDataForm" class="payment-form">
+    <form [formGroup]="cardDataForm" (click)="submitPayment()" class="payment-form">
       <div class="form-group">
         <label for="firstName">First name</label>
         <input formControlName="firstName" type="firstName" class="form-control" id="firstName">
@@ -63,13 +63,11 @@
         <label for="expiry-date">Expiry date</label>
         <input formControlName="expiryDate" type="expiry-date" class="form-control" id="expiry-date">
       </div>
-      <div class="confirm-block">
+      <div class="submit-block">
+      
         <button
-          *ngIf="!isLoading"
-          [disabled]="cardDataForm.invalid"
-          (click)="submitPayment()"
           type="submit" class="btn btn-primary"
-        >Confirm
+        >Submit
         </button>
       </div>
     </form>
